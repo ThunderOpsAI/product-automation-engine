@@ -8,6 +8,8 @@ import metricsRouter from './routes/metrics.js';
 import productsRouter from './routes/products.js';
 import listingsRouter from './routes/listings.js';
 import supportRouter from './routes/support.js';
+import pipelineRouter from './routes/pipeline.js';
+import notificationsRouter from './routes/notifications.js';
 import { authMiddleware } from './middleware/auth.js';
 
 // ═══════════════════════════════════════════
@@ -51,6 +53,8 @@ app.use('/api/metrics', metricsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/listings', listingsRouter);
 app.use('/api/support', supportRouter);
+app.use('/api/pipeline', pipelineRouter);
+app.use('/api/notifications', notificationsRouter);
 
 // ─────────────────────
 // Error handler

@@ -1,0 +1,52 @@
+name: System 1 Daily Pipeline
+
+on:
+  schedule:
+    - cron: '0 6 * * *'     # 6am UTC daily (5pm AEST)
+  workflow_dispatch:          # manual trigger from GitHub UI
+
+jobs:
+  daily-pipeline:
+    name: Run Daily Pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger MarketIntel → Listing pipeline
+        run: |
+          curl -sf -X POST "${{ secrets.API_URL }}/api/pipeline/run-daily" \
+            -H "Authorization: Bearer ${{ secrets.API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"max_niches": 3}'
+          echo "Daily pipeline triggered"
+
+  optimization:
+    name: Run Weekly Optimization
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Trigger Optimization Agent
+        run: |
+          # Only run on Mondays (day 1) for scheduled runs
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            DAY_OF_WEEK=$(date -u +%u)
+            if [ "$DAY_OF_WEEK" != "1" ]; then
+              echo "Skipping optimization — not Monday"
+              exit 0
+            fi
+          fi
+          curl -sf -X POST "${{ secrets.API_URL }}/api/pipeline/run-optimization" \
+            -H "Authorization: Bearer ${{ secrets.API_KEY }}" \
+            -H "Content-Type: application/json"
+          echo "Optimization pass triggered"
+
+  daily-summary:
+    name: Send Daily Summary
+    runs-on: ubuntu-latest
+    needs: [daily-pipeline]
+    steps:
+      - name: Trigger Daily Summary Email
+        run: |
+          # Wait 5 minutes for pipeline tasks to complete
+          sleep 300
+          curl -sf -X POST "${{ secrets.API_URL }}/api/notifications/daily-summary" \
+            -H "Authorization: Bearer ${{ secrets.API_KEY }}"
+          echo "Daily summary sent"

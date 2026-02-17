@@ -3,6 +3,9 @@
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",
+        "composite": true,
+        "declaration": true,
+        "declarationMap": true,
         "types": [
             "node"
         ]
