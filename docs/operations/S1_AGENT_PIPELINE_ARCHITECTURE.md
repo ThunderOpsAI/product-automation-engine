@@ -61,9 +61,19 @@
 
 | Score | Action |
 |-------|--------|
-| 8–10 | Proceed autonomously |
-| 7 | Proceed with logging, flag for review |
-| < 7 | Auto-queue for human approval before next step |
+| ≥ agent threshold | Proceed autonomously |
+| < agent threshold | Auto-queue for human approval before next step |
+
+Per-agent thresholds:
+| Agent | Threshold |
+|-------|-----------|
+| MarketIntel | 7 |
+| AssetSourcing | 7 |
+| Enhancement | 8 |
+| Branding | 7 |
+| Listing | 8 |
+| Optimization | 6 (uses priority, not confidence) |
+| Support Triage | 6 |
 
 ---
 
@@ -82,7 +92,7 @@
 | Orchestrator | GitHub Actions / n8n |
 | Agent runtime | Node.js / TypeScript on Vercel or Railway |
 | Database | Supabase (Postgres + Storage) |
-| AI calls | Claude API (claude-sonnet-4-5) |
+| AI calls | Google Gemini API (gemini-2.0-flash) |
 | Image generation | DALL-E or Stable Diffusion API |
 | Marketplace APIs | Gumroad API, Etsy API |
 | Email | Resend / Postmark |

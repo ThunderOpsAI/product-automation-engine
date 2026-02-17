@@ -15,7 +15,7 @@ interface OptimizationOutput {
     current_value: any;
     proposed_value: any;
     hypothesis: string;
-    priority: number;   // 1–10 confidence in improvement
+    priority: number;   // 1–10, higher = more impactful but riskier
   }>;
 }
 ```
@@ -32,7 +32,7 @@ interface OptimizationOutput {
 
 ---
 
-## Approval Threshold
+## Priority Threshold
 - **Priority < 8:** Agent can implement autonomously
 - **Priority ≥ 8:** Queued for human approval before going live
 

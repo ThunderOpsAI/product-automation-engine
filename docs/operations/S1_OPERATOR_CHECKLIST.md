@@ -27,7 +27,7 @@ Add each of these as a secret:
 
 | Secret Name | Where to find it |
 |-------------|-----------------|
-| `CLAUDE_API_KEY` | https://console.anthropic.com → API keys |
+| `GEMINI_API_KEY` | https://aistudio.google.com → API keys |
 | `SUPABASE_URL` | Supabase → Project Settings → API |
 | `SUPABASE_ANON_KEY` | Supabase → Project Settings → API |
 | `SUPABASE_SERVICE_KEY` | Supabase → Project Settings → API |
@@ -40,11 +40,9 @@ Add each of these as a secret:
 | `API_URL` | Set after Vercel deploy (step below) |
 | `DASHBOARD_URL` | Set after Vercel deploy (step below) |
 
-### 3. Run Initial Build (Claude Code)
+### 3. Run Initial Build
 
-Open Claude Code and paste the entire contents of `S1_CLAUDE_CODE_PROMPT.md`.
-
-Claude Code will build:
+The automated build creates:
 - Full TypeScript codebase
 - Database migration file
 - All 7 agent modules
@@ -264,15 +262,15 @@ Once everything is running (after Day 30), your daily routine is:
 
 ---
 
-## ESCALATIONS: What Claude Sends You (vs Handles Itself)
+## ESCALATIONS: What the System Handles (vs What You Handle)
 
-### Claude handles automatically (you see nothing):
+### System handles automatically (you see nothing):
 - Download how-to questions
 - File format/compatibility questions
 - Refunds within 7 days
 - All A/B experiments with priority < 8
 
-### Claude sends to your approval queue:
+### System sends to your approval queue:
 - Confidence scores below threshold
 - Products with quality < 8 before listing
 - A/B experiments with priority ≥ 8
@@ -329,7 +327,7 @@ At $1,000 gross/month: costs ~$200–250 = **$750–800 net = 75–80% margin**
 
 ## QUICK REFERENCE: Approval Decision Guide
 
-| What Claude shows you | Typical time to decide | Default action |
+| What the system shows you | Typical time to decide | Default action |
 |-----------------------|----------------------|----------------|
 | Niche brief (MarketIntel) | 2 min | Approve if saturation = low/medium and confidence ≥ 6 |
 | Asset source compliance | 1 min | Approve if license is populated and source is known |

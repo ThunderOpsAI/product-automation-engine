@@ -1,0 +1,21 @@
+{
+  "name": "product-automation-engine",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter api dev & pnpm --filter dashboard dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "db:migrate": "pnpm --filter api db:migrate",
+    "db:seed": "pnpm --filter api db:seed",
+    "test:agents": "pnpm --filter api test:agents",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

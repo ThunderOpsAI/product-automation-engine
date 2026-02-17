@@ -1,0 +1,19 @@
+{
+    "name": "@s1/shared",
+    "version": "0.1.0",
+    "private": true,
+    "main": "./src/index.ts",
+    "types": "./src/index.ts",
+    "scripts": {
+        "build": "tsc",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@google/generative-ai": "^0.21.0",
+        "@supabase/supabase-js": "^2.45.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "typescript": "^5.5.0"
+    }
+}

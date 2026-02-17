@@ -1,29 +1,38 @@
-# Node
+# Dependencies
 node_modules/
-dist/
+.pnpm-store/
+
+# Environment files
 .env
 .env.local
-.env.production
+.env.*.local
 
-# Logs
-logs/
-*.log
-
-# Mac
-.DS_Store
-
-# Vercel
+# Build outputs
+dist/
+.next/
 .vercel/
-
-# Supabase
-.supabase/
+out/
 
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Coverage
+# OS
+.DS_Store
+Thumbs.db
+
+# Supabase
+.supabase/
+
+# Turbo
+.turbo/
+
+# Test coverage
 coverage/
 
-# Temp
-tmp/
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

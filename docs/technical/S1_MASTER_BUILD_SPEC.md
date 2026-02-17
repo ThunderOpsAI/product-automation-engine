@@ -1,8 +1,8 @@
 # SYSTEM 1: DIGITAL ARBITRAGE FACTORY
-## Complete Build Specification for Claude Code
+## Complete Build Specification
 
 > **Goal:** $1,000–3,000/month automated revenue by Month 2  
-> **Stack:** TypeScript · Supabase · Vercel/Railway · GitHub Actions · Claude API  
+> **Stack:** TypeScript · Supabase · Vercel/Railway · GitHub Actions · Gemini API  
 > **Human time:** 30 min/day (approvals only)  
 > **Budget (System 1 slice):** ~$200–450/mo running costs + $200–400 one-time ads
 
@@ -28,7 +28,7 @@ The operator only approves niche selections (once, ~30 min) and reviews low-conf
 ```
 Acquisition (public domain / CC0 assets)
         ↓
-Enhancement (Claude + formatting tools)
+Enhancement (Gemini + formatting tools)
         ↓
 Distribution (Gumroad + Etsy listings)
         ↓
@@ -90,7 +90,7 @@ interface OpportunityBrief {
 }
 ```
 
-**Claude prompt:**
+**Gemini prompt:**
 ```
 You are a digital product market researcher.
 
@@ -149,7 +149,7 @@ interface SourcePack {
 2. `commons.wikimedia.org` — CC0 images, diagrams, illustrations
 3. `github.com` — open source repos with permissive licenses
 4. Operator's own purchased asset libraries
-5. AI-generated original content (DALL-E / Claude output = operator-owned)
+5. AI-generated original content (DALL-E / Gemini output = operator-owned)
 
 ---
 
@@ -322,7 +322,7 @@ interface OptimizationOutput {
 - Price test range: ±20% of current price
 - All changes logged with before/after data for learning
 
-**Claude prompt for experiment generation:**
+**Gemini prompt for experiment generation:**
 ```
 You are a conversion rate optimizer for digital products.
 
@@ -669,7 +669,7 @@ jobs:
 
 ```typescript
 const RATE_LIMITS = {
-  claude_api:          50,   // requests per minute
+  gemini_api:          50,   // requests per minute
   gumroad_api:        100,   // per hour
   etsy_api:            40,   // per hour (Etsy is strict)
   image_generation:    20,   // per hour
@@ -762,7 +762,7 @@ const APPROVED_SOURCES = [
 ## 30-DAY EXECUTION PLAN
 
 ### Days 1–3: Foundation
-**Claude Code builds:**
+**Automated build includes:**
 - Supabase schema (all tables above)
 - Task Router API (all endpoints)
 - GitHub Actions orchestrator
@@ -772,7 +772,7 @@ const APPROVED_SOURCES = [
 
 **You do:**
 - Create Supabase project, Vercel/Railway project
-- Add API keys to GitHub secrets: `CLAUDE_API_KEY`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `GUMROAD_ACCESS_TOKEN`, `OPERATOR_EMAIL`, `RESEND_API_KEY`
+- Add API keys to GitHub secrets: `GEMINI_API_KEY`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `GUMROAD_ACCESS_TOKEN`, `OPERATOR_EMAIL`, `RESEND_API_KEY`
 - Run `pnpm db:migrate` to create tables
 - Test with mock tasks
 
@@ -899,9 +899,9 @@ const APPROVED_SOURCES = [
 ## ENVIRONMENT VARIABLES REQUIRED
 
 ```bash
-# Claude
-CLAUDE_API_KEY=sk-ant-...
-CLAUDE_MODEL=claude-sonnet-4-5-20250929
+# Gemini
+GEMINI_API_KEY=...
+GEMINI_MODEL=gemini-2.0-flash
 
 # Supabase
 SUPABASE_URL=https://xxx.supabase.co
@@ -928,6 +928,6 @@ NODE_ENV=production
 
 ---
 
-## FIRST THING TO BUILD (CLAUDE CODE PROMPT)
+## FIRST THING TO BUILD
 
-See `S1_CLAUDE_CODE_PROMPT.md` for the exact prompt to paste into Claude Code to begin construction.
+See `S1_GEMINI_CODE_PROMPT.md` for the detailed build instruction to begin construction.
