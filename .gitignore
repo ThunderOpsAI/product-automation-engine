@@ -1,0 +1,29 @@
+# Node
+node_modules/
+dist/
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+
+# Mac
+.DS_Store
+
+# Vercel
+.vercel/
+
+# Supabase
+.supabase/
+
+# IDE
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+
+# Temp
+tmp/
